@@ -8,6 +8,7 @@ RTI is a high-fidelity, real-time geopolitical and aviation risk dashboard. It i
 The system monitors live flight patterns, aggregates global news signals (via API and RSS), and uses a multi-layered AI reasoning engine to generate actionable intelligence briefs.
 
 ## Key Features
+- **Multi-Agent Architecture**: A sophisticated orchestrator managing specialized agents for Geopolitics (`GeoIntelAgent`), Aviation (`AviationAgent`), and Strategic Analysis (`AnalystAgent`).
 - **3D Geospatial Monitoring**: Interactive globe visualizing risk zones, flight corridors, and real-time aircraft density.
 - **Multilayered Reasoning Agent**: A 2-pass AI analysis pipeline that uses low-cost models for extraction and triggers deep reasoning only when escalation scores peak.
 - **Real-Time Data Pipeline**: WebSockets provide instant updates from the orchestrator to the dashboard with zero-latency broadcasting.
