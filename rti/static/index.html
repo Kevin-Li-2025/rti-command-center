@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RTI — Command Center</title>
+  <meta name="description" content="Resilience Travel Intelligence — Real-time geopolitical risk monitoring and aviation disruption tracking">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 3D Globe -->
+  <div id="globe-container"></div>
+
+  <!-- Overlay UI -->
+  <div class="overlay">
+    <!-- Header -->
+    <header class="top-bar">
+      <div class="logo-group">
+        <span class="logo-icon">⬡</span>
+        <span class="logo">RTI</span>
+        <span class="logo-text">Resilience Travel Intelligence</span>
+      </div>
+      <div class="header-right">
+        <div class="ws-dot" id="ws-dot" title="WebSocket status"></div>
+        <span class="subtitle">COMMAND CENTER</span>
+        <div class="menu-icon"><span></span><span></span><span></span></div>
+      </div>
+    </header>
+
+    <!-- Main Grid -->
+    <div class="main-grid">
+      <!-- LEFT — Globe area + AI Brief -->
+      <div class="left-col">
+        <div class="section-label globe-section-label">
+          <span class="label-icon">🌐</span> GLOBAL RISK MONITOR
+          <div class="label-line"></div>
+        </div>
+
+        <!-- Zone Tooltip -->
+        <div id="zone-tooltip" class="zone-tooltip hidden">
+          <div class="tt-header" id="tt-zone-name">IRAN AIRSPACE</div>
+          <div class="tt-row"><span>Risk:</span> <span id="tt-risk" class="sev-high">HIGH</span></div>
+          <div class="tt-row"><span>Flight Density:</span> <span id="tt-density">-82%</span></div>
+          <div class="tt-row"><span>News Signals:</span> <span id="tt-news">Conflict Escalation</span></div>
+        </div>
+
+        <!-- Escalation Gauge -->
+        <div class="escalation-gauge" id="escalation-gauge">
+          <svg viewBox="0 0 120 120" class="gauge-svg">
+            <circle cx="60" cy="60" r="52" class="gauge-track"/>
+            <circle cx="60" cy="60" r="52" class="gauge-fill" id="gauge-fill"/>
+          </svg>
+          <div class="gauge-value" id="gauge-value">0</div>
+          <div class="gauge-label">ESCALATION</div>
+        </div>
+
+        <!-- AI Intelligence Brief -->
+        <section class="panel ai-brief" id="ai-brief-panel">
+          <div class="panel-header">
+            <span class="panel-icon">🧠</span> AI INTELLIGENCE BRIEF
+            <div class="label-line"></div>
+          </div>
+          <div class="brief-content">
+            <div class="brief-meta">
+              <span>Region: <span class="accent" id="brief-region">Middle East</span></span>
+              <span>Time: <span id="brief-time">--:--</span> UTC</span>
+            </div>
+            <div class="brief-section">
+              <div class="brief-label">Summary:</div>
+              <p id="situation-summary" class="brief-text">Initializing intelligence feed...</p>
+            </div>
+            <div class="brief-row">
+              <div class="brief-section">
+                <div class="brief-label">Impact:</div>
+                <div id="brief-impact" class="brief-value">Calculating...</div>
+              </div>
+              <div class="brief-section">
+                <div class="brief-label">Recommendation:</div>
+                <div id="brief-rec" class="recommendation-board">Awaiting analysis...</div>
+              </div>
+            </div>
+            <div class="brief-footer">Confidence: <span id="brief-conf">—</span></div>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT — Route Status + Alerts -->
+      <div class="right-col">
+        <section class="panel route-status">
+          <div class="panel-header">
+            ROUTE STATUS
+            <div class="label-line"></div>
+          </div>
+          <div id="route-cards" class="route-cards">
+            <div class="route-card skeleton"><div class="shimmer"></div></div>
+            <div class="route-card skeleton"><div class="shimmer"></div></div>
+            <div class="route-card skeleton"><div class="shimmer"></div></div>
+          </div>
+        </section>
+
+        <section class="panel alerts-panel">
+          <div class="panel-header">
+            <span class="panel-icon">⚠</span> REAL-TIME ALERTS
+            <div class="label-line"></div>
+          </div>
+          <div id="alert-list" class="alert-list">
+            <div class="alert-item"><span class="alert-text dim">Scanning operational theater...</span></div>
+          </div>
+          <div class="run-bar">
+            <button id="run-btn" onclick="triggerRun()">
+              <span class="btn-icon">▶</span> RUN PIPELINE
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="loading-overlay hidden">
+    <div class="loading-ring"></div>
+    <div class="loading-text">SCANNING OPERATIONAL THEATER...</div>
+  </div>
+
+  <script src="https://unpkg.com/globe.gl@2.35.1"></script>
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
